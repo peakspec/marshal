@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+
+# Environment files (never commit credentials)
+.env
+.env.*
+*.env
+
+# Claude Code local settings (may contain tokens/secrets)
+.claude/settings.local.json
+
+# Config with real values (commit only config.example.md)
+skills/fellow/config.md
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Temp files from skill installation
+/tmp/

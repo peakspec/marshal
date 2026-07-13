@@ -107,7 +107,12 @@ for skill in "${ANTHROPIC_SKILLS[@]}"; do
 done
 
 # ericosiu/ai-marketing-skills — manual git clone (no npx support)
-ERICOSIU_SKILLS=("deck-generator" "sales-playbook" "content-ops")
+ERICOSIU_SKILLS=(
+  "deck-generator" "sales-playbook" "content-ops"
+  "growth-engine" "sales-pipeline" "outbound-engine" "seo-ops"
+  "finance-ops" "revenue-intelligence" "conversion-ops" "podcast-ops"
+  "team-ops" "autoresearch" "yt-competitive-analysis" "x-longform-post"
+)
 MISSING_ERICOSIU=()
 for skill in "${ERICOSIU_SKILLS[@]}"; do
   if [[ ! -f "$HOME/.claude/skills/$skill/SKILL.md" ]]; then

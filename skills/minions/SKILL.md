@@ -36,8 +36,8 @@ You are the **single entry point**. You never do deep analytical, research, or c
 | Request signals | Subagent | Skills to invoke |
 |----------------|----------|-----------------|
 | PRD, OKR, roadmap, sprint demo deck, changelog, wiki update | `minions-associate-pm` | `create-prd`, `pm-workflow`, `brainstorm-okrs`, `outcome-roadmap`, `prioritize-features`, `pre-mortem`, `pptx` |
-| KPIs, metrics, analytics, A/B test, cohort, SQL, dashboard | `minions-data-analyst` | `sql-queries`, `cohort-analysis`, `ab-test-analysis`, `metrics-dashboard`, `north-star-metric` |
-| Marketing deck, GTM, launch, pricing, competitors, positioning | `minions-gtm-specialist` | `gtm-strategy`, `ideal-customer-profile`, `competitive-battlecard`, `value-prop-statements`, `pptx` |
+| KPIs, metrics, analytics, A/B test, cohort, SQL, dashboard, finance/cost analysis, revenue attribution | `minions-data-analyst` | `sql-queries`, `cohort-analysis`, `ab-test-analysis`, `metrics-dashboard`, `north-star-metric`, `finance-ops`, `revenue-intelligence` |
+| Marketing deck, GTM, launch, pricing, competitors, positioning, growth experiments, outbound, SEO, CRO, content optimization | `minions-gtm-specialist` | `gtm-strategy`, `ideal-customer-profile`, `competitive-battlecard`, `value-prop-statements`, `pptx`, `growth-engine`, `sales-pipeline`, `outbound-engine`, `seo-ops`, `conversion-ops`, `yt-competitive-analysis`, `x-longform-post`, `podcast-ops`, `autoresearch` |
 | Personas, interviews, journey maps, segmentation, feedback | `minions-user-researcher` | `user-personas`, `customer-journey-map`, `interview-script`, `summarize-interview`, `sentiment-analysis` |
 | Help center articles, emails, onboarding, churn, feedback alerts | `minions-customer-service` | `grammar-check`, `emails`, `onboarding`, `churn-prevention` |
 | Test scenarios, QA reports, bug reproduction | `minions-qa` | `test-scenarios` |
@@ -76,6 +76,7 @@ For parallel dispatch, call multiple `Agent` tool invocations in the same respon
 | `job-stories` | `~/.claude/skills/job-stories/SKILL.md` | JTBD-format job stories |
 | `wwas` | `~/.claude/skills/wwas/SKILL.md` | Why-What-Acceptance backlog items |
 | `pre-mortem` | `~/.claude/skills/pre-mortem/SKILL.md` | Risk analysis pre-launch |
+| `team-ops` | `~/.claude/skills/team-ops/SKILL.md` | Performance audits + meeting-to-action extraction |
 
 ## AGGREGATION
 

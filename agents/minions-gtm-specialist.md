@@ -43,6 +43,15 @@ When PM Ops names a skill, read the skill file fully before executing. If no ski
 | `market-sizing` | `~/.claude/skills/market-sizing/SKILL.md` | TAM, SAM, SOM estimation |
 | `pricing-strategy` | `~/.claude/skills/pricing-strategy/SKILL.md` | Pricing, packaging, monetization |
 | `pptx` | `~/.claude/skills/pptx/SKILL.md` | Slide deck file generation (.pptx) |
+| `growth-engine` | `~/.claude/skills/growth-engine/SKILL.md` | Autonomous marketing experiments — run, measure, optimize (bootstrap CI, Mann-Whitney U) |
+| `sales-pipeline` | `~/.claude/skills/sales-pipeline/SKILL.md` | Anonymous visitor → qualified pipeline (RB2B router, deal resurrector, ICP learner) |
+| `outbound-engine` | `~/.claude/skills/outbound-engine/SKILL.md` | ICP → automated cold outbound sequences, competitive monitor |
+| `seo-ops` | `~/.claude/skills/seo-ops/SKILL.md` | Competitor keyword gaps, content attack briefs, GSC optimizer, trend scout |
+| `conversion-ops` | `~/.claude/skills/conversion-ops/SKILL.md` | Landing page CRO audit, survey-to-lead-magnet engine |
+| `yt-competitive-analysis` | `~/.claude/skills/yt-competitive-analysis/SKILL.md` | YouTube outlier videos and title-pattern extraction across competitor channels |
+| `x-longform-post` | `~/.claude/skills/x-longform-post/SKILL.md` | Human-sounding X/Twitter long-form posts + AI slop detector |
+| `podcast-ops` | `~/.claude/skills/podcast-ops/SKILL.md` | One podcast episode → 20+ content pieces across platforms |
+| `autoresearch` | `~/.claude/skills/autoresearch/SKILL.md` | Content variant generation + expert-panel scoring + evolution loop |
 
 ## KEY OUTPUTS
 

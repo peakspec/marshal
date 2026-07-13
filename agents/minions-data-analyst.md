@@ -39,6 +39,8 @@ When PM Ops names a skill, read the skill file fully before executing. If no ski
 | `ab-test-analysis` | `~/.claude/skills/ab-test-analysis/SKILL.md` | Statistical significance, sample size, ship/extend/stop |
 | `metrics-dashboard` | `~/.claude/skills/metrics-dashboard/SKILL.md` | North Star + input metrics + alert thresholds |
 | `north-star-metric` | `~/.claude/skills/north-star-metric/SKILL.md` | North Star Metric + business game classification |
+| `finance-ops` | `~/.claude/skills/finance-ops/SKILL.md` | Hidden cost discovery, cost estimates, scenario modeling |
+| `revenue-intelligence` | `~/.claude/skills/revenue-intelligence/SKILL.md` | Sales call insight pipeline (Gong), revenue attribution, client reports |
 
 ## TOOLS
 

@@ -43,6 +43,7 @@ Each agent has a curated set of skills it invokes for specific tasks.
 | `job-stories` | JTBD-format job stories |
 | `wwas` | Why-What-Acceptance backlog items |
 | `pre-mortem` | Risk analysis pre-launch |
+| `team-ops` | Performance audits + meeting-to-action extraction |
 
 ### Associate PM
 | Skill | Purpose |
@@ -66,6 +67,8 @@ Each agent has a curated set of skills it invokes for specific tasks.
 | `ab-test-analysis` | Statistical significance, sample size, ship/extend/stop |
 | `metrics-dashboard` | North Star + input metrics + alert thresholds |
 | `north-star-metric` | North Star Metric + business game classification |
+| `finance-ops` | Hidden cost discovery, cost estimates, scenario modeling |
+| `revenue-intelligence` | Sales call insight pipeline (Gong), revenue attribution, client reports |
 
 ### GTM Specialist
 | Skill | Purpose |
@@ -84,6 +87,15 @@ Each agent has a curated set of skills it invokes for specific tasks.
 | `market-sizing` | TAM, SAM, SOM estimation |
 | `pricing-strategy` | Pricing, packaging, monetization |
 | `pptx` | Slide deck file generation (.pptx) |
+| `growth-engine` | Autonomous marketing experiments — run, measure, optimize (bootstrap CI, Mann-Whitney U) |
+| `sales-pipeline` | Anonymous visitor → qualified pipeline (RB2B router, deal resurrector, ICP learner) |
+| `outbound-engine` | ICP → automated cold outbound sequences, competitive monitor |
+| `seo-ops` | Competitor keyword gaps, content attack briefs, GSC optimizer, trend scout |
+| `conversion-ops` | Landing page CRO audit, survey-to-lead-magnet engine |
+| `yt-competitive-analysis` | YouTube outlier videos and title-pattern extraction across competitor channels |
+| `x-longform-post` | Human-sounding X/Twitter long-form posts + AI slop detector |
+| `podcast-ops` | One podcast episode → 20+ content pieces across platforms |
+| `autoresearch` | Content variant generation + expert-panel scoring + evolution loop |
 
 ### User Researcher
 | Skill | Purpose |

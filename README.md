@@ -8,7 +8,7 @@ Built for **Claude Code** (primary) and **OpenCode**.
 
 ## What is minions?
 
-minions is a team of AI agents, each playing a specific product team role — Associate PM, Data Analyst, GTM Specialist, User Researcher, Customer Service, and QA. You talk to one entry point (PM Ops via `/minions`), and it routes your request to the right specialist agent — or runs multiple agents in parallel for cross-domain tasks. Each agent knows which skills to invoke, which Lark tables to read or write, and how to hand off outputs to the next agent in the chain.
+minions is a team of AI agents, each playing a specific product team role — Associate PM, Data Analyst, GTM Specialist, User Researcher, Customer Service, QA, and UI/UX Designer. You talk to one entry point (PM Ops via `/minions`), and it routes your request to the right specialist agent — or runs multiple agents in parallel for cross-domain tasks. Each agent knows which skills to invoke, which Lark tables to read or write, and how to hand off outputs to the next agent in the chain.
 
 ---
 

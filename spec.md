@@ -110,7 +110,7 @@ There is no PostHog CLI. The Data Analyst agent will automatically search your p
 
 ## 1. Problem Statement
 
-Product teams often lack headcount for specialized roles: Associate PM, Data Analyst (BI), Go-to-Market Specialist, User Researcher, Customer Service, and QA.
+Product teams often lack headcount for specialized roles: Associate PM, Data Analyst (BI), Go-to-Market Specialist, User Researcher, Customer Service, QA, and UI/UX Designer.
 
 **Solution:** AI subagents that act as virtual team members, each scoped to a specific role, powered by curated skills from open-source repositories and integrated with Lark Suite + PostHog toolchain.
 

@@ -23,6 +23,7 @@ minions is a team of AI agents, each playing a specific product team role — As
 | **User Researcher** | Research & insights | Personas, journey maps, interviews, sentiment |
 | **Customer Service** | Customer comms | Help center articles, onboarding emails, feedback triage |
 | **QA** | Quality assurance | Test scenarios, QA readiness, bug reproduction |
+| **UI/UX Designer** | Interface design | Wireframes, design specs, design audits, accessibility review, on-request UI code |
 
 ---
 
@@ -123,6 +124,18 @@ Each agent has a curated set of skills it invokes for specific tasks.
 | `test-scenarios` | Happy paths, edge cases, error handling |
 | `webapp-testing` | Web application testing with Playwright |
 
+### UI/UX Designer
+| Skill | Purpose |
+|-------|---------|
+| `design-taste-frontend` | Generate new UI from scratch |
+| `redesign-existing-projects` | Audit and improve an existing UI |
+| `image-to-code` | Screenshot/mock → implemented UI code |
+| `high-end-visual-design` | "Polished, calm, expensive" visual style |
+| `minimalist-ui` | Notion/Linear-style restrained design |
+| `industrial-brutalist-ui` | Industrial/Swiss-typography style |
+| `stitch-design-taste` | Google Stitch-compatible design rules |
+| `full-output-enforcement` | Prevents truncated generation output |
+
 ---
 
 ## Quick Start
@@ -172,7 +185,8 @@ PM Ops  ────────────────────────
  ├─── GTM Specialist    (GTM, ICP, decks, competitive) │  or
  ├─── User Researcher   (personas, journeys, research) │  sequential
  ├─── Customer Service  (help center, emails, triage)  │
- └─── QA                (test scenarios, QA reports)  ─┘
+ ├─── QA                (test scenarios, QA reports)    │
+ └─── UI/UX Designer    (wireframes, design specs, UI) ─┘
 ```
 
 PM Ops decomposes your request, dispatches independent subtasks in parallel and dependent ones sequentially, then aggregates everything into one response.
@@ -215,7 +229,8 @@ minions/
 │   ├── minions-gtm-specialist.md    ← GTM Specialist subagent
 │   ├── minions-user-researcher.md   ← User Researcher subagent
 │   ├── minions-customer-service.md  ← Customer Service subagent
-│   └── minions-qa.md                ← QA subagent
+│   ├── minions-qa.md                ← QA subagent
+│   └── minions-ui-ux-designer.md    ← UI/UX Designer subagent
 ├── skills/
 │   └── minions/
 │       ├── SKILL.md                ← PM Ops (entry point via /minions)

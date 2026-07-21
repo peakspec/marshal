@@ -65,6 +65,16 @@ mkdir -p ~/.claude/skills/deck-generator ~/.claude/skills/sales-playbook ~/.clau
 cp /tmp/ai-marketing-skills/deck-generator/SKILL.md ~/.claude/skills/deck-generator/
 cp /tmp/ai-marketing-skills/sales-playbook/SKILL.md ~/.claude/skills/sales-playbook/
 cp /tmp/ai-marketing-skills/content-ops/SKILL.md ~/.claude/skills/content-ops/
+
+# UI/UX skills — used by UI/UX Designer
+npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend
+npx skills add https://github.com/Leonxlnx/taste-skill --skill redesign-existing-projects
+npx skills add https://github.com/Leonxlnx/taste-skill --skill image-to-code
+npx skills add https://github.com/Leonxlnx/taste-skill --skill high-end-visual-design
+npx skills add https://github.com/Leonxlnx/taste-skill --skill minimalist-ui
+npx skills add https://github.com/Leonxlnx/taste-skill --skill industrial-brutalist-ui
+npx skills add https://github.com/Leonxlnx/taste-skill --skill stitch-design-taste
+npx skills add https://github.com/Leonxlnx/taste-skill --skill full-output-enforcement
 ```
 
 ### 0.4 Skill Coverage Status
@@ -84,6 +94,7 @@ cp /tmp/ai-marketing-skills/content-ops/SKILL.md ~/.claude/skills/content-ops/
 | `emails`, `onboarding`, `churn-prevention`, `customer-research`, `analytics`, `ab-testing`, `launch`, `sales-enablement`, `competitors`, `pricing`, `marketing-plan` | coreyhaines31/marketingskills | Installed via `npx skills add coreyhaines31/marketingskills` |
 | `pptx`, `docx`, `xlsx`, `webapp-testing`, `internal-comms` | anthropics/skills | Installed individually (see 0.3) |
 | `deck-generator`, `sales-playbook`, `content-ops` | ericosiu/ai-marketing-skills | Manual copy (see 0.3) |
+| `design-taste-frontend`, `redesign-existing-projects`, `image-to-code`, `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `stitch-design-taste`, `full-output-enforcement` | leonxlnx/taste-skill | Installed individually (see 0.3) |
 
 ### 0.5 PostHog Configuration
 
@@ -420,6 +431,37 @@ planning.
 
 ---
 
+### 4.8 UI/UX Designer
+
+**Role:** Wireframe/design spec production, design system audits, accessibility review.
+On explicit request, generates or redesigns real UI code (React/Vue/Svelte) via
+taste-skill rather than just describing the design.
+
+**Core Skills:**
+
+| Skill | Source | Purpose |
+|-------|--------|---------|
+| `design-taste-frontend` | leonxlnx/taste-skill | Generate new UI from scratch |
+| `redesign-existing-projects` | leonxlnx/taste-skill | Audit and improve an existing UI |
+| `image-to-code` | leonxlnx/taste-skill | Screenshot/mock → implemented UI code |
+| `high-end-visual-design` | leonxlnx/taste-skill | "Polished, calm, expensive" visual style |
+| `minimalist-ui` | leonxlnx/taste-skill | Notion/Linear-style restrained design |
+| `industrial-brutalist-ui` | leonxlnx/taste-skill | Industrial/Swiss-typography style |
+| `stitch-design-taste` | leonxlnx/taste-skill | Google Stitch-compatible design rules |
+| `full-output-enforcement` | leonxlnx/taste-skill | Prevents truncated generation output |
+
+**Tools Access:**
+- `lark-cli base +...` — read Issues table for feature specifications and acceptance criteria (read-only)
+- `lark-cli docs +...` — read PRDs for design context
+
+**Key Outputs:**
+- Wireframe / design spec descriptions per feature
+- Design system audits
+- Accessibility review
+- Generated or redesigned UI code (only when implementation is explicitly requested)
+
+---
+
 ## 5. PM Ops Orchestration Protocol
 
 ### 5.1 Request Flow
@@ -447,6 +489,7 @@ planning.
 | Personas, interviews, journey maps, segmentation, feedback analysis | User Researcher |
 | Help center, emails, onboarding, churn, feedback alerts | Customer Service |
 | Test scenarios, QA reports, bug reproduction | QA |
+| Wireframes, mockups, UI/UX design, design system, redesign existing UI, accessibility review | UI/UX Designer |
 | Cross-domain (e.g., sprint report + marketing deck) | Multiple subagents (parallel) |
 
 ### 5.3 Core Document Access Protocol

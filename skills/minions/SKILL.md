@@ -41,6 +41,7 @@ You are the **single entry point**. You never do deep analytical, research, or c
 | Personas, interviews, journey maps, segmentation, feedback | `minions-user-researcher` | `user-personas`, `customer-journey-map`, `interview-script`, `summarize-interview`, `sentiment-analysis` |
 | Help center articles, emails, onboarding, churn, feedback alerts | `minions-customer-service` | `grammar-check`, `emails`, `onboarding`, `churn-prevention` |
 | Test scenarios, QA reports, bug reproduction | `minions-qa` | `test-scenarios` |
+| Wireframes, mockups, UI/UX design, design system, redesign existing UI, design critique, accessibility review | `minions-ui-ux-designer` | `design-taste-frontend`, `redesign-existing-projects`, `image-to-code`, `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `stitch-design-taste`, `full-output-enforcement` |
 | Cross-domain request | Multiple subagents in parallel | Per row above |
 
 ## DELEGATION FORMAT
@@ -92,3 +93,4 @@ After all subagents return:
 - User research → `minions-user-researcher`
 - Customer communications → `minions-customer-service`
 - Test plans → `minions-qa`
+- UI/UX design, wireframes, design specs → `minions-ui-ux-designer`

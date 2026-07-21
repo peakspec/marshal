@@ -20,7 +20,7 @@ echo -e "${RESET}"
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # ── 1. Prerequisites ───────────────────────────────────────────────────────────
-header "1/4  Checking prerequisites"
+header "1/5  Checking prerequisites"
 
 # Claude Code
 if command -v claude &>/dev/null; then
@@ -45,7 +45,7 @@ else
 fi
 
 # ── 2. Copy agent + skill files ────────────────────────────────────────────────
-header "2/4  Installing minions agents and skill"
+header "2/5  Installing minions agents and skill"
 
 AGENTS_DIR="$HOME/.claude/agents"
 SKILLS_DIR="$HOME/.claude/skills/minions"
@@ -72,7 +72,7 @@ else
 fi
 
 # ── 3. Install external skill packages ────────────────────────────────────────
-header "3/4  Installing skill packages"
+header "3/5  Installing skill packages"
 
 SKILLS=(
   "phuryn/pm-execution"
@@ -144,8 +144,25 @@ if [[ ${#MISSING_ERICOSIU[@]} -gt 0 ]]; then
   fi
 fi
 
-# ── 4. Lark auth check ─────────────────────────────────────────────────────────
-header "4/4  Checking Lark authentication"
+# ── 4. Install taste-skill (UI/UX Designer) ───────────────────────────────────
+header "4/5  Installing taste-skill (UI/UX Designer)"
+
+TASTE_SKILLS=(
+  "design-taste-frontend" "redesign-existing-projects" "image-to-code"
+  "high-end-visual-design" "minimalist-ui" "industrial-brutalist-ui"
+  "stitch-design-taste" "full-output-enforcement"
+)
+for skill in "${TASTE_SKILLS[@]}"; do
+  info "Installing taste-skill: $skill ..."
+  if npx skills add https://github.com/Leonxlnx/taste-skill --skill "$skill" --quiet 2>/dev/null; then
+    ok "taste-skill: $skill"
+  else
+    warn "taste-skill: $skill — install failed or not available, skipping"
+  fi
+done
+
+# ── 5. Lark auth check ─────────────────────────────────────────────────────────
+header "5/5  Checking Lark authentication"
 
 if command -v lark-cli &>/dev/null; then
   STATUS=$(lark-cli auth status 2>/dev/null | grep -i "tokenStatus" | awk -F'"' '{print $4}')

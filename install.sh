@@ -88,7 +88,7 @@ SKILLS=(
 
 for skill in "${SKILLS[@]}"; do
   info "Installing $skill ..."
-  if npx skills add "$skill" --quiet 2>/dev/null; then
+  if npx skills add "$skill" --global --quiet 2>/dev/null; then
     ok "$skill"
   else
     warn "$skill — install failed or not available, skipping"
@@ -99,7 +99,7 @@ done
 ANTHROPIC_SKILLS=("pptx" "docx" "xlsx" "webapp-testing" "internal-comms")
 for skill in "${ANTHROPIC_SKILLS[@]}"; do
   info "Installing anthropics/skills --skill $skill ..."
-  if npx skills add anthropics/skills --skill "$skill" --quiet 2>/dev/null; then
+  if npx skills add anthropics/skills --skill "$skill" --global --quiet 2>/dev/null; then
     ok "anthropics/skills: $skill"
   else
     warn "anthropics/skills: $skill — install failed or not available, skipping"
@@ -154,7 +154,7 @@ TASTE_SKILLS=(
 )
 for skill in "${TASTE_SKILLS[@]}"; do
   info "Installing taste-skill: $skill ..."
-  if npx skills add https://github.com/Leonxlnx/taste-skill --skill "$skill" --quiet 2>/dev/null; then
+  if npx skills add https://github.com/Leonxlnx/taste-skill --skill "$skill" --global --quiet 2>/dev/null; then
     ok "taste-skill: $skill"
   else
     warn "taste-skill: $skill — install failed or not available, skipping"

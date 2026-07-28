@@ -29,9 +29,15 @@ mkdir -p ~/.claude/skills/minions
 cp skills/minions/SKILL.md ~/.claude/skills/minions/SKILL.md
 cp skills/minions/config.example.md ~/.claude/skills/minions/config.md
 # Edit config.md and fill in your Lark base token and table IDs
+
+# Copy the optimize-goal skill (review/enhance goal.md task specs)
+mkdir -p ~/.claude/skills/optimize-goal/references
+cp skills/optimize-goal/SKILL.md ~/.claude/skills/optimize-goal/SKILL.md
+cp skills/optimize-goal/references/best-practices.md ~/.claude/skills/optimize-goal/references/best-practices.md
 ```
 
-After this, type `/minions` in any Claude Code session to invoke PM Ops.
+After this, type `/minions` in any Claude Code session to invoke PM Ops. `optimize-goal` is
+also usable standalone — point Claude at any `goal.md` and ask it to review/enhance it.
 
 ### 0.3 Install Required Skills
 
@@ -218,6 +224,7 @@ parallel where possible, aggregates results, and returns consolidated output to 
 | `pre-mortem` | phuryn/pm-execution | Risk analysis pre-launch |
 | `internal-comms` | anthropics/skills | Internal communication drafting |
 | `marketing-plan` | coreyhaines31/marketingskills | AARRR-structured marketing plan |
+| `optimize-goal` | this repo | Review/enhance a `goal.md` task spec — clarifies ambiguity via targeted questions, rewrites on approval |
 
 **Tools Access:**
 - `lark-cli base +...` — read/write Issues, Pillars, Modules, Subtask, Roadmap, Master Sprint tables

@@ -78,6 +78,7 @@ For parallel dispatch, call multiple `Agent` tool invocations in the same respon
 | `wwas` | `~/.claude/skills/wwas/SKILL.md` | Why-What-Acceptance backlog items |
 | `pre-mortem` | `~/.claude/skills/pre-mortem/SKILL.md` | Risk analysis pre-launch |
 | `team-ops` | `~/.claude/skills/team-ops/SKILL.md` | Performance audits + meeting-to-action extraction |
+| `optimize-goal` | `~/.claude/skills/optimize-goal/SKILL.md` | Review/enhance a goal.md task spec: clarify ambiguity, then rewrite on approval |
 
 ## AGGREGATION
 

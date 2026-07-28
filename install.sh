@@ -60,6 +60,13 @@ done
 cp "$REPO_DIR/skills/minions/SKILL.md" "$SKILLS_DIR/SKILL.md"
 ok "Installed skills/minions/SKILL.md → $SKILLS_DIR/"
 
+# optimize-goal — standalone skill, review/enhance goal.md task specs
+OPTIMIZE_GOAL_DIR="$HOME/.claude/skills/optimize-goal"
+mkdir -p "$OPTIMIZE_GOAL_DIR/references"
+cp "$REPO_DIR/skills/optimize-goal/SKILL.md" "$OPTIMIZE_GOAL_DIR/SKILL.md"
+cp "$REPO_DIR/skills/optimize-goal/references/best-practices.md" "$OPTIMIZE_GOAL_DIR/references/best-practices.md"
+ok "Installed skills/optimize-goal/ → $OPTIMIZE_GOAL_DIR/"
+
 # Config — only copy template if config.md doesn't already exist
 if [[ ! -f "$SKILLS_DIR/config.md" ]]; then
   cp "$REPO_DIR/skills/minions/config.example.md" "$SKILLS_DIR/config.md"

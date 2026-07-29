@@ -8,11 +8,14 @@ description: Use when the user wants to review, critique, tighten, or enhance an
 ## Overview
 
 A `goal.md` is a long-form instruction the user writes to a file instead of typing into
-chat, meant to be executed as a `/goal` command. Whatever is ambiguous, unmeasurable, or
-missing in that file passes straight through into whatever executes it — there's no chat
-back-and-forth to catch it later. This skill reviews an existing `goal.md` against
-prompt-engineering best practice, clarifies the gaps with the user, and only then rewrites
-the file.
+chat, meant to be fed to Claude Code's [`/goal`](https://code.claude.com/docs/en/goal)
+command. `/goal` uses that same text twice: once as the directive for the first turn, and
+then every turn after, a separate transcript-only judge model re-checks it against the
+conversation to decide whether to stop. Whatever is ambiguous, unmeasurable, or unverifiable
+in the file passes straight through into both of those — there's no chat back-and-forth to
+catch it later. This skill reviews an existing `goal.md` against a checklist tuned to both
+general prompt clarity and `/goal`'s actual mechanics, clarifies the gaps with the user, and
+only then rewrites the file.
 
 **Not for:** helping someone compose a goal.md from scratch when no draft exists yet —
 that's `superpowers:brainstorming` territory. This skill starts from a file that already
@@ -44,13 +47,15 @@ every goal.md, applied contextually:
 |---|---|
 | Task clarity | Would a colleague with no context execute this correctly on the first read? |
 | Context / why | Is the motivation behind non-obvious constraints stated? |
-| Success criteria | Is "done" defined in a way that's checkable, not just descriptive? |
+| Success criteria | Is "done" a measurable end state **with a stated check** the transcript-only evaluator can actually see Claude demonstrate — not just described? |
+| Bound the loop | Is there a turn/time stop clause, so an unverifiable or open-ended condition can't run forever? |
 | Non-goals / scope | Is what's explicitly *out* of scope stated, to prevent scope creep? |
 | Resources | Are the inputs, docs, or repos the task depends on named and locatable? |
 | Guardrails | Are irreversible/high-blast-radius actions flagged for confirmation? |
 | Execution order | Are steps that must happen in sequence actually ordered? |
 | Prerequisites | Is setup/access needed before starting called out? |
 | Output format | Is the shape of the deliverable (file, PR, report, message) explicit? |
+| Fits `/goal` | If this file feeds `/goal` directly, does the condition portion fit under the 4,000-char cap? |
 | Ambiguity scan | Any line readable two different ways? |
 
 ## Common mistakes

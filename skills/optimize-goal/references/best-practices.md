@@ -1,12 +1,34 @@
 # goal.md review checklist
 
-Condensed from Anthropic's [prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)
-and adapted for reviewing a `goal.md`-style task spec — a written instruction meant to be
-executed by an agent with no further back-and-forth, rather than a conversational prompt.
+Condensed from two sources:
+
+- Anthropic's [prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) — general prompt clarity, examples, structure.
+- Claude Code's [`/goal` reference](https://code.claude.com/docs/en/goal) — the actual mechanics of how a goal.md's content gets executed once it's handed to `/goal`.
 
 Use this as a lens to find gaps, not a form every goal.md must fill in. A short, already-clear
 goal.md may only need two or three of these checked; a large multi-repo goal may need all of
 them plus examples.
+
+---
+
+## How `/goal` actually works (read this first)
+
+`/goal <condition>` does two things with the same text, not one:
+
+1. **First turn:** the condition itself is used as the directive — Claude acts on it directly, no separate prompt needed.
+2. **Every turn after:** a separate small/fast model (Haiku by default) re-reads the condition against the conversation transcript and answers yes/no. No → Claude keeps working, using the model's stated reason as guidance. Yes → the goal clears.
+
+This means a goal.md destined for `/goal` is judged twice, and by two different things:
+
+- **By Claude**, as an instruction to act on.
+- **By a transcript-only judge model that cannot run commands or read files itself.** It only sees what Claude has already surfaced in the conversation. A condition like "all tests pass" only resolves if Claude actually runs the tests and the output lands in the transcript — the judge cannot verify anything Claude didn't first demonstrate.
+
+Two hard constraints follow directly from this:
+
+- **4,000-character cap** on the condition text.
+- **No bound by default.** Nothing stops the loop except the condition becoming true, so an unbounded or unverifiable condition can run indefinitely.
+
+Everything below is shaped by these mechanics, not just general prompt clarity.
 
 ---
 
@@ -37,30 +59,50 @@ spec didn't anticipate, instead of pattern-matching the letter of the rule.
 `legacy/` folder — it's frozen pending a migration sign-off from the infra team, and edits
 there get silently reverted by a sync job."
 
-## 3. Success criteria (End State / Output)
+## 3. Success criteria — measurable AND transcript-verifiable
 
-**Check:** Is "done" defined in terms that are checkable — a test that passes, a file that
-exists with certain content, a metric that crosses a threshold — rather than only described?
+**Check:** Is "done" defined as something Claude's own output can demonstrate inside the
+conversation — not merely something objectively true? Every success criterion needs three
+parts:
 
-**Why:** Descriptive success criteria ("the page should look better") leave the executing
-agent to invent its own definition of done, which rarely matches what the author had in mind.
+- **One measurable end state** — a test result, a build exit code, a file count, an empty queue.
+- **A stated check** — how Claude proves it, e.g. "`npm test` exits 0" or "`git status` is clean." If the check isn't named, Claude may consider the goal met without ever producing evidence the judge model can read.
+- **Constraints that must not change** — anything that has to stay untouched on the way there, e.g. "no other test file is modified."
 
-**Fix pattern:** Pair every qualitative goal with a concrete check. "The page should convert
-better" → "The signup form should be reachable in ≤2 clicks from the hero, and the CTA above
-the fold."
+**Why:** The model evaluating completion after each turn never runs commands or reads files
+itself — it only judges the transcript. A criterion that's true in reality but never
+demonstrated in-conversation (e.g. "the tests pass" when Claude never actually ran them this
+session) can neither be confirmed nor denied correctly.
 
-## 4. Non-goals / explicit scope boundary
+**Fix pattern:** "The page should convert better" (unverifiable) → "The signup form is
+reachable in ≤2 clicks from the hero and the CTA sits above the fold — confirm by describing
+the click path and pasting the relevant markup" (measurable + has a stated check).
+
+## 4. Bound the loop
+
+**Check:** Does the condition include an explicit turn or time limit clause (e.g. "...or stop
+after 20 turns"), or is the end state guaranteed to resolve on its own?
+
+**Why:** `/goal` has no default ceiling — it keeps re-evaluating every turn until the
+condition holds. An end state that's ambiguous, perpetually "almost met," or dependent on
+something outside Claude's control (e.g. a human review) can loop unbounded.
+
+**Fix pattern:** Add a stop clause to any open-ended or exploratory goal: "...or stop after 15
+turns and report what's blocking completion."
+
+## 5. Non-goals / explicit scope boundary
 
 **Check:** Does the goal.md say what's explicitly *out* of scope, not only what's in scope?
 
 **Why:** Absent an explicit boundary, agents tend to over-deliver — extra features,
 refactors, or "improvements" nobody asked for — which inflates the task and can break things
-adjacent to it.
+adjacent to it. This doubles as one of the "constraints that must not change" the evaluator
+should be checking every turn (see #3).
 
 **Fix pattern:** Add a short "Non-Output" or "Out of scope" line: "Do not touch the billing
 integration. Do not redesign the nav — only the hero section."
 
-## 5. Resources
+## 6. Resources
 
 **Check:** Are the inputs the task depends on (docs, repos, prior specs, existing files)
 named and locatable, not just referenced vaguely?
@@ -74,19 +116,20 @@ grounding.
 files this one builds on. If there are several, a short bulleted list beats a single
 paragraph mentioning them in passing.
 
-## 6. Guardrails
+## 7. Guardrails
 
 **Check:** Are irreversible or high-blast-radius actions (deleting data, force-pushing,
 posting publicly, spending money, contacting real people) flagged as needing confirmation
 before the executing agent takes them?
 
-**Why:** Without this, an agent executing a goal.md autonomously has no signal for which
-actions are safe to take unilaterally versus which need a human in the loop first.
+**Why:** Without this, an agent executing a goal.md autonomously — potentially unattended,
+across many `/goal` turns — has no signal for which actions are safe to take unilaterally
+versus which need a human in the loop first.
 
 **Fix pattern:** Add a Guardrails section naming the specific irreversible actions relevant
 to *this* task and what to do instead of just doing them (ask first, or don't do it at all).
 
-## 7. Execution order
+## 8. Execution order
 
 **Check:** When steps have a real dependency order, are they written as an ordered
 list — not a paragraph of intermixed tasks the executor has to re-sequence?
@@ -97,7 +140,7 @@ later steps depend on earlier output.
 **Fix pattern:** Convert "do A, and also remember B before C" prose into a numbered list
 reflecting the actual dependency order.
 
-## 8. Prerequisites / dependencies
+## 9. Prerequisites / dependencies
 
 **Check:** Is anything required *before* execution can start (access, credentials, a prior
 step finishing, another goal.md's output) called out explicitly?
@@ -108,7 +151,7 @@ stated, the agent either blocks or guesses.
 **Fix pattern:** Short explicit list: "Requires: repo write access, `.env` with API key
 already present, goal [2] already complete."
 
-## 9. Output format
+## 10. Output format
 
 **Check:** Is the shape of the deliverable explicit — a file at a path, a PR, a report in
 chat, a specific document format — rather than left implicit?
@@ -119,7 +162,23 @@ whether the target is a Slack message, a markdown file, or a PR description. Say
 **Fix pattern:** State the deliverable directly: "Output: a PR against `main` with a
 one-paragraph description," not just "let me know when it's done."
 
-## 10. Ambiguity scan
+## 11. Fits the `/goal` argument, not just reads well as a doc
+
+**Check:** If this goal.md is meant to be fed to `/goal` directly, does the condition portion
+compress to something under the 4,000-character cap, written as a condition (see #3) rather
+than a general task description?
+
+**Why:** A goal.md can carry more supporting detail than `/goal` accepts in one shot — context,
+resources, and rationale are useful for a human reader and for Claude's first turn, but the
+per-turn evaluator only needs the condition, the check, and the constraints. If the file is
+long, the review should call out which portion *is* the condition to paste into `/goal`.
+
+**Fix pattern:** For long goal.md files, end with a short, explicit block (e.g. under a
+`## Condition` heading) that's the actual `/goal`-ready text — self-contained, under 4,000
+characters, phrased as a checkable condition — separate from the surrounding context/resources
+prose.
+
+## 12. Ambiguity scan
 
 **Check:** Re-read every line once more looking specifically for wording that could be taken
 two different ways by two different readers.
@@ -131,7 +190,7 @@ ambiguous phrases, not structural gaps.
 explicit, or ask the user which one they meant (this is the primary source of clarifying
 questions this skill should ask).
 
-## 11. Examples (only when the task has a "taste" component)
+## 13. Examples (only when the task has a "taste" component)
 
 **Check:** For tasks involving style, tone, or a subjective judgment call (copy, design,
 naming), are there 1–3 examples of the desired output, or a reference to emulate?

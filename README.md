@@ -45,6 +45,7 @@ Each agent has a curated set of skills it invokes for specific tasks.
 | `wwas` | Why-What-Acceptance backlog items |
 | `pre-mortem` | Risk analysis pre-launch |
 | `team-ops` | Performance audits + meeting-to-action extraction |
+| `optimize-goal` | Review/enhance a `goal.md` task spec — clarifies ambiguity, then rewrites on approval |
 
 ### Associate PM
 | Skill | Purpose |
@@ -232,15 +233,20 @@ minions/
 │   ├── minions-qa.md                ← QA subagent
 │   └── minions-ui-ux-designer.md    ← UI/UX Designer subagent
 ├── skills/
-│   └── minions/
-│       ├── SKILL.md                ← PM Ops (entry point via /minions)
-│       └── config.example.md       ← Lark config template (copy → config.md and fill in)
+│   ├── minions/
+│   │   ├── SKILL.md                ← PM Ops (entry point via /minions)
+│   │   └── config.example.md       ← Lark config template (copy → config.md and fill in)
+│   └── optimize-goal/
+│       ├── SKILL.md                ← Review/enhance a goal.md task spec
+│       └── references/
+│           └── best-practices.md   ← Prompt-engineering checklist used for the review
 ├── install.sh                      ← One-command installer
 ├── spec.md                         ← Full specification
 └── README.md
 ```
 
-After install, all files live in `~/.claude/agents/` and `~/.claude/skills/minions/`.
+After install, all files live in `~/.claude/agents/`, `~/.claude/skills/minions/`, and
+`~/.claude/skills/optimize-goal/`.
 
 ---
 

@@ -5,6 +5,6 @@ description: EXTERNAL SKILL NOT YET VENDORED — original source likely phuryn/p
 
 # Placeholder: pre-mortem
 
-This SKILL.md is a stub. The original skill was referenced from  in the Claude Code  agent, but it is not present in this repository and was not installed under .
+This SKILL.md is a stub. The original skill was referenced from `agents/minions-associate-pm.md` in the Claude Code agent, but it is not present in this repository and was not installed under `~/.claude/skills/`.
 
 Before use, vendor the real skill content from its upstream repository (e.g.  or the relevant GitHub source) into this file.

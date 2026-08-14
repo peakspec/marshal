@@ -1,3 +1,5 @@
+
+
 # minions — AI Subagent Team
 
 A team of AI subagents that act as virtual product team members. Each agent is scoped to a specific role and powered by curated skills from open-source repositories.
@@ -152,6 +154,7 @@ Each agent has a curated set of skills it invokes for specific tasks.
 ```bash
 git clone https://github.com/bahni-m/minions.git
 cd minions
+chmod +x install.sh
 ./install.sh
 ```
 

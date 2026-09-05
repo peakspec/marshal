@@ -1,4 +1,4 @@
-# minions — AI Subagent Team
+# marshal — AI Subagent Team
 
 A team of AI subagents that act as virtual product team members. Each agent is scoped to a specific role and powered by curated skills from open-source repositories.
 
@@ -6,9 +6,9 @@ Built for **Claude Code** (primary) and **OpenCode**.
 
 ---
 
-## What is minions?
+## What is marshal?
 
-minions is a team of AI agents, each playing a specific product team role — Associate PM, Data Analyst, GTM Specialist, User Researcher, Customer Service, QA, and UI/UX Designer. You talk to one entry point (PM Ops via `/minions`), and it routes your request to the right specialist agent — or runs multiple agents in parallel for cross-domain tasks. Each agent knows which skills to invoke, which Lark tables to read or write, and how to hand off outputs to the next agent in the chain.
+marshal is a team of AI agents, each playing a specific product team role — Associate PM, Data Analyst, GTM Specialist, User Researcher, Customer Service, QA, and UI/UX Designer. You talk to one entry point (PM Ops via `/marshal`), and it routes your request to the right specialist agent — or runs multiple agents in parallel for cross-domain tasks. Each agent knows which skills to invoke, which Lark tables to read or write, and how to hand off outputs to the next agent in the chain.
 
 ---
 
@@ -150,8 +150,8 @@ Each agent has a curated set of skills it invokes for specific tasks.
 ### 2. Install
 
 ```bash
-git clone https://github.com/bahni-m/minions.git
-cd minions
+git clone https://github.com/peakspec/marshal.git
+cd marshal
 ./install.sh
 ```
 
@@ -159,14 +159,14 @@ The script copies all agent files, installs the PM Ops skill, creates your confi
 
 ### 3. Configure Lark
 
-Open `~/.claude/skills/minions/config.md` (created by the installer) and fill in your Lark base token and table IDs.
+Open `~/.claude/skills/marshal/config.md` (created by the installer) and fill in your Lark base token and table IDs.
 
 ### 4. Use it
 
 Open Claude Code in any workspace and type:
 
 ```
-/minions
+/marshal
 ```
 
 PM Ops will take your request, route it to the right subagents, and return a consolidated response.
@@ -178,7 +178,7 @@ PM Ops will take your request, route it to the right subagents, and return a con
 ```
 You
  │
- ▼ /minions
+ ▼ /marshal
 PM Ops  ──────────────────────────────────────────────┐
  │                                                     │
  ├─── Associate PM      (PRDs, OKRs, roadmaps, decks) │
@@ -196,7 +196,7 @@ PM Ops decomposes your request, dispatches independent subtasks in parallel and 
 
 ## Usage
 
-Just tell `/minions` what you need:
+Just tell `/marshal` what you need:
 
 ```
 "Review sprint progress, reprioritize, create report, send to Lark, create demo deck, changelog, update wiki"
@@ -223,18 +223,18 @@ Just tell `/minions` what you need:
 ## File Structure
 
 ```
-minions/
+marshal/
 ├── agents/
-│   ├── minions-associate-pm.md      ← Associate PM subagent
-│   ├── minions-data-analyst.md      ← Data Analyst subagent
-│   ├── minions-gtm-specialist.md    ← GTM Specialist subagent
-│   ├── minions-user-researcher.md   ← User Researcher subagent
-│   ├── minions-customer-service.md  ← Customer Service subagent
-│   ├── minions-qa.md                ← QA subagent
-│   └── minions-ui-ux-designer.md    ← UI/UX Designer subagent
+│   ├── marshal-associate-pm.md      ← Associate PM subagent
+│   ├── marshal-data-analyst.md      ← Data Analyst subagent
+│   ├── marshal-gtm-specialist.md    ← GTM Specialist subagent
+│   ├── marshal-user-researcher.md   ← User Researcher subagent
+│   ├── marshal-customer-service.md  ← Customer Service subagent
+│   ├── marshal-qa.md                ← QA subagent
+│   └── marshal-ui-ux-designer.md    ← UI/UX Designer subagent
 ├── skills/
-│   ├── minions/
-│   │   ├── SKILL.md                ← PM Ops (entry point via /minions)
+│   ├── marshal/
+│   │   ├── SKILL.md                ← PM Ops (entry point via /marshal)
 │   │   └── config.example.md       ← Lark config template (copy → config.md and fill in)
 │   └── optimize-goal/
 │       ├── SKILL.md                ← Review/enhance a goal.md task spec
@@ -245,7 +245,7 @@ minions/
 └── README.md
 ```
 
-After install, all files live in `~/.claude/agents/`, `~/.claude/skills/minions/`, and
+After install, all files live in `~/.claude/agents/`, `~/.claude/skills/marshal/`, and
 `~/.claude/skills/optimize-goal/`.
 
 ---
@@ -259,7 +259,7 @@ After install, all files live in `~/.claude/agents/`, `~/.claude/skills/minions/
 | `lark-cli im +...` | Send Lark messages (feedback alerts) |
 | PostHog REST API | Product analytics — agents self-discover credentials from `.env` |
 
-Lark base token and table IDs are stored in `~/.claude/skills/minions/config.md` (filled in during setup). PostHog credentials, Lark group chat IDs, and Lark Doc tokens are self-discovered by agents at runtime.
+Lark base token and table IDs are stored in `~/.claude/skills/marshal/config.md` (filled in during setup). PostHog credentials, Lark group chat IDs, and Lark Doc tokens are self-discovered by agents at runtime.
 
 ---
 
